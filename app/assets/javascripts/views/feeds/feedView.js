@@ -25,6 +25,7 @@ InstaTech.Views.FeedView = Backbone.View.extend({
 		});
 
 		this.$el.html(renderedContent);
+		this.$el.addClass("panel panel-primary singleFeed");
 		return this;
 	}
 });

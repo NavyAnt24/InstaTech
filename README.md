@@ -15,5 +15,8 @@ things to do for project
   3) Allow user to add feeds (have a feed index page, but also allow the user to input a new feed themselves)
   4)
   5) Chat with other users currently online
+	6) Animated menu items
+	7) Draggable / Droppable
+	8) Fix footer alignment
 
   Added polymorphic associations to comment model so that both entries and feeds can have comments
