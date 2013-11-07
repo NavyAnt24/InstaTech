@@ -8,6 +8,8 @@ InstaTech.Router = Backbone.Router.extend({
 		var userFeedsView = new InstaTech.Views.UserFeedsView({
 			collection: InstaTech.userFeeds
 		})
+
+		this._swapFeedsView(userFeedsView);
 	},
 
 	showFeed: function() {
@@ -16,13 +18,13 @@ InstaTech.Router = Backbone.Router.extend({
 
 	//////////////////////////////////////////
 
-	_swapView: function(newView) {
-		if (this._prevView) {
-			this._prevView.remove();
+	_swapFeedsView: function(newFeedsView) {
+		if (this._prevFeedsView) {
+			this._prevFeedsView.remove();
 		}
 
-		this._prevView = newView
-		$('.backbone-container').html(newView.render().$el);
+		this._prevFeedsView = newFeedsView
+		$('#feed-view').html(newFeedsView.render().$el);
 	}
 
 });

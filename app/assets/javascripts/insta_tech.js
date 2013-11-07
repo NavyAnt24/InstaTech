@@ -4,14 +4,15 @@ window.InstaTech = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
-		InstaTech.userFeeds = new InstaTech.Collection.UserFeeds()
-		InstaTech.userFeeds.fetch({
-			success: function() {
-				new InstaTech.Router();
-				Backbone.history.start();
-			}
-		});
+    console.log('Hello from Backbone!');
+		// InstaTech.userFeeds = new InstaTech.Collections.Feeds()
+		// InstaTech.userFeeds.fetch({
+		// 	success: function() {
+		// 		router = new InstaTech.Router();
+		// 		Backbone.history.start();
+		// 		router.navigate("users/" + InstaTech.Store.currentUserId + "/feeds")
+		// 	}
+		// });
   }
 };
 

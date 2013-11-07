@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     else
       self.current_user = user
       redirect_to user_url(user)
+      # redirect_to "/users/" + current_user.id + "/feeds"
     end
   end
 

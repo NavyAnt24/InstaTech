@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       self.current_user = @user
       redirect_to user_url(@user)
+      # redirect_to "/users/" + current_user.id + "/feeds"
     else
       render :json => @user.errors.full_messages
     end
