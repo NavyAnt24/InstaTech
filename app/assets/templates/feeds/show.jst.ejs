@@ -1,7 +1,9 @@
 <!-- <div class="singleFeed" class="col-md-3"> -->
 
 <div class="panel-heading">
-	<h3 class="panel-title"><%= feed.get('title') %></h3>
+	<a href="#feeds/<%= feed.id %>/entries">
+		<h3 class="panel-title"><%= feed.get('title') %></h3>
+	</a>
 </div>
 
 <div class="panel-body">

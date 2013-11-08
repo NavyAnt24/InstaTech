@@ -16,7 +16,7 @@ $(document).ready(function(){
   });
 
   // $('li.trash-can').hover(function() {
-  // 	$('img.trash-can').css("webkit-filter", invert(100%));
+  // 	$('img.trash-can').css("-webkit-filter", invert(100%));
   // });
 
 	$('.save-feed').click(function() {

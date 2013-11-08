@@ -1,0 +1,11 @@
+<div class="panel-body">
+
+	<% title = entry.get('title') %>
+	<% entry_url = entry.get('link') %>
+
+	<a href="<%= entry_url %>"><%= title %></a>
+</div>
+
+<div class="panel-footer">
+	Published at: <%= entry.get('published_at') %>
+</div>

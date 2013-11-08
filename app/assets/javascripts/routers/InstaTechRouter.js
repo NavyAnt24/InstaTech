@@ -1,4 +1,5 @@
 InstaTech.Router = Backbone.Router.extend({
+
 	routes: {
 		"users/:id/feeds" : "userFeeds",
 		"feeds/:feed_id/entries" : "showFeed"
@@ -21,15 +22,30 @@ InstaTech.Router = Backbone.Router.extend({
 			start: function() {
 				$(this).ClassyWiggle('start');
 			},
-			
+
 			stop: function() {
 				$(this).ClassyWiggle('stop');
 			}
 		});
 	},
 
-	showFeed: function() {
+	showFeed: function(feed_id) {
+		var entriesView = new InstaTech.Views.EntriesView({
+			collection: InstaTech.userFeeds.get( parseInt(feed_id) ).entries()
+		});
 
+		this._swapFeedsView(entriesView);
+
+		$('.panel-default').draggable({
+			revert: true,
+			start: function() {
+				$(this).ClassyWiggle('start');
+			},
+
+			stop: function() {
+				$(this).ClassyWiggle('stop');
+			}
+		});
 	},
 
 	//////////////////////////////////////////

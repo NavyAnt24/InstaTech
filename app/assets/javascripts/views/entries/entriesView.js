@@ -1,12 +1,19 @@
 InstaTech.Views.EntriesView = Backbone.View.extend({
 	template: JST['entries/index'],
 
-	initialize: function(options) {
-		this.options = options;
-		// this.listenTo(this.collection, "add remove sync", this.render);
-		// this.listenTo(this.collection, "change", this.render);
-	},
+	initialize: function() {
+		entries = this.collection;
+		subEntryViews = [];
+		entries.each(function(entry) {
+			subEntryView = new InstaTech.Views.EntryView({
+				currentEntry: entry
+			});
+			subEntryViews.push(subEntryView);
+		});
 
+		this.listenTo(this.collection, "add remove sync", this.render);
+		this.listenTo(this.collection, "change", this.render);
+	},
 
 	////// MAKE SURE THIS WORKS!
 
@@ -19,11 +26,16 @@ InstaTech.Views.EntriesView = Backbone.View.extend({
 	///////////////////////
 
 	render: function() {
+		var that = this;
+
 		var renderedContent = this.template({
-			feed: this.options.currentFeed
+			entries: this.collection
 		});
 
-		this.$el.html(renderedContent);
+		subEntryViews.forEach(function(entryView) {
+			that.$el.append(entryView.render().$el);
+		});
+
 		return this;
 	}
 });

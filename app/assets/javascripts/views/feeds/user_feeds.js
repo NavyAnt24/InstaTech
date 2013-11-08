@@ -15,17 +15,12 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 		this.listenTo(this.collection, "change", this.render);
 	},
 
-	// a = {}
-	// a["name of var"] =
-
 	render: function() {
 		var that = this;
 
 		var renderedContent = this.template({
 			title: "My Feeds",
 			feeds: this.collection,
-			// subViews: this.subFeedViews
-			// how to inject subViews into this View
 		});
 
 		subFeedViews.forEach(function(feedView) {
