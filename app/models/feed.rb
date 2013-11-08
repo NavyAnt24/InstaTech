@@ -17,8 +17,6 @@ class Feed < ActiveRecord::Base
       puts "error!"
       return nil
     end
-
-    p feed
     feed
   end
 

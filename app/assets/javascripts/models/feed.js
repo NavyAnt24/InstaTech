@@ -7,5 +7,17 @@ InstaTech.Models.Feed = Backbone.Model.extend({
 		}
 
 		return this._feedEntries;
+	},
+
+	parse: function(response) {
+		var that = this;
+		entries = response.entries;
+		entries.forEach(function(entry) {
+			backbone_entry = new InstaTech.Models.Entry(entry);
+			that.entries().push(backbone_entry);
+		});
+
+		delete response.entries;
+		return response;
 	}
 });

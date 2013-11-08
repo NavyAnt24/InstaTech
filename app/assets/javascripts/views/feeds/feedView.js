@@ -19,7 +19,6 @@ InstaTech.Views.FeedView = Backbone.View.extend({
 	///////////////////////
 
 	render: function() {
-		console.log(this.options.currentFeed);
 		var renderedContent = this.template({
 			feed: this.options.currentFeed
 		});

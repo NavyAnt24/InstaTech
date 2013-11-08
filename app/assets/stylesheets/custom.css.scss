@@ -1,8 +1,8 @@
-@import 'bootstrap';
 
-/*html {
-	overflow-y: scroll;
-}*/
+
+body {
+	background-image: url('tweed.png');
+}
 
 .inner-body {
 	margin-top: 60px;
@@ -10,6 +10,21 @@
 
 .navbar-brand {
 	font-family: 'Lobster', cursive;
+}
+
+/* modal */
+
+.modal-dialog {
+	position: static;
+	margin-top: 15%;
+}
+
+input {
+	background-color: rgba(122, 130, 136, 1);
+	height: 60px;
+	width: 530px;
+	font-size: 22pt;
+	font-family: Calibri, Arial, Sans-serif;
 }
 
 /* header */

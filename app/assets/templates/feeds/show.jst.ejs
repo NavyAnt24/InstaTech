@@ -5,5 +5,17 @@
 </div>
 
 <div class="panel-body">
-	Hey there!
+
+	<% title0 = feed.entries().models[0].get('title'); %>
+	<% entry_url0 = feed.entries().models[0].get('link') %>
+
+	<% title1 = feed.entries().models[1].get('title'); %>
+	<% entry_url1 = feed.entries().models[1].get('link') %>
+
+	<% title2 = feed.entries().models[2].get('title'); %>
+	<% entry_url2 = feed.entries().models[2].get('link') %>
+
+	1) <a href="<%= entry_url0 %>"><%= title0 %></a><br>
+	2) <a href="<%= entry_url1 %>"><%= title1 %></a><br>
+	3) <a href="<%= entry_url2 %>"><%= title2 %></a><br>
 </div>

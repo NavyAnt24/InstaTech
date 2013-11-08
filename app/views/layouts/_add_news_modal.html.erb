@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal fade" id="add-news-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add RSS Feed Below:</h4>
+      </div>
+      <div class="modal-body">
+
+				<form action="_add_news_modal_submit" method="post" accept-charset="utf-8">
+					<input type="text" class="feed-url-input" name="feed[url]" placeholder="Input RSS URL..." id="feed_url" data-toggle="tooltip" data-placement="right" data-original-title="You didn't input anything!">
+
+					<!-- <p><input type="submit" value="Continue &rarr;"></p> -->
+				</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary save-feed">Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

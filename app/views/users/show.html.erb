@@ -12,7 +12,7 @@
 
 			InstaTech.userFeeds = new InstaTech.Collections.Feeds()
 			InstaTech.userFeeds.fetch({
-				success: function() {
+				success: function(collection) {
 					router = new InstaTech.Router();
 					Backbone.history.start();
 					router.navigate("users/" + InstaTech.Store.currentUserId + "/feeds")
@@ -21,4 +21,5 @@
 		</script>
 
 	</div>
+
 </div>

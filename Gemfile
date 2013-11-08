@@ -10,6 +10,7 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'debugger'
 end
 
 gem 'backbone-on-rails'
