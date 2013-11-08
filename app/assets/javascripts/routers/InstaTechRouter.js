@@ -10,6 +10,22 @@ InstaTech.Router = Backbone.Router.extend({
 		})
 
 		this._swapFeedsView(userFeedsView);
+
+		// $('.panel-primary').click(function() {
+		// 	$(this).ClassyWiggle('start');
+		// 	// $('.panel-primary').wiggle('start');
+		// });
+
+		$('.panel-primary').draggable({
+			revert: true,
+			start: function() {
+				$(this).ClassyWiggle('start');
+			},
+			
+			stop: function() {
+				$(this).ClassyWiggle('stop');
+			}
+		});
 	},
 
 	showFeed: function() {

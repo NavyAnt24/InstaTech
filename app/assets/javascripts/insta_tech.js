@@ -5,40 +5,45 @@ window.InstaTech = {
   Routers: {},
   initialize: function() {
     console.log('Hello from Backbone!');
-		// InstaTech.userFeeds = new InstaTech.Collections.Feeds()
-		// InstaTech.userFeeds.fetch({
-		// 	success: function() {
-		// 		router = new InstaTech.Router();
-		// 		Backbone.history.start();
-		// 		router.navigate("users/" + InstaTech.Store.currentUserId + "/feeds")
-		// 	}
-		// });
   }
 };
 
 $(document).ready(function(){
   InstaTech.initialize();
 
+  $('.feeds-link').click(function() {
+  	Backbone.history.navigate("users/" + InstaTech.Store.currentUserId + "/feeds");
+  });
+
+  // $('li.trash-can').hover(function() {
+  // 	$('img.trash-can').css("webkit-filter", invert(100%));
+  // });
+
 	$('.save-feed').click(function() {
 		var formData = $('.feed-url-input').serializeJSON();
 		var feed = new InstaTech.Models.Feed(formData.feed);
 		InstaTech.userFeeds.add(feed);
-		feed.save(
+		feed.save({
 			success: function() {
+				alert('hello');
+				$('#add-news-modal').modal('hide');
+				$('.feed-url-input').val() = "";
 				Backbone.history.navigate("users/" + InstaTech.Store.currentUserId + "/feeds");
+			},
+			error: function(model, xhr) {
+				console.log(xhr);
 			}
-		);
+		});
 	});
 
-	$('.feed-url-input').blur(function() {
+	$('.feed-url-input').focusout(function() {
 		if ($(this).val().length === 0) {
 			$(this).tooltip('enable');
+			$(this).tooltip('show');
 		}
 	});
 
 	$('.feed-url-input').focus(function() {
-		if ($(this).val().length !== 0) {
-			$(this).tooltip('disable');
-		}
+		$(this).tooltip('disable');
 	});
 });

@@ -7,10 +7,17 @@
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="#">Feeds</a>
+							<% if current_user.nil? %>
+								<li><a href="">Feeds</a>
+							<% else %>
+								<a href="/users/<%= current_user.id %>#/users/<%= current_user.id%>/feeds" class="feeds-link">Feeds</a>
+							<% end %>
 						</li>
 						<li>
 							<a href="#">Articles</a>
+						</li>
+						<li class="trash-can">
+							<a href="#"><img class="trash-can" src="/images/trash_can_inverted.png"></a>
 						</li>
 					</ul>
 

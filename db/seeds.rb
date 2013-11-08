@@ -14,6 +14,6 @@ urls = [
 ]
 
 urls.each do |url|
-  Feed.find_or_create_by_url(url, 3)
+  Feed.find_or_create_by_url(url, 1)
 end
 

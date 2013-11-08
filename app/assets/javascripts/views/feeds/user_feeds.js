@@ -11,8 +11,8 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 			subFeedViews.push(subView);
 		});
 
-		// this.listenTo(this.collection, "add remove sync", this.render);
-		// this.listenTo(this.collection, "change", this.render);
+		this.listenTo(this.collection, "add remove sync", this.render);
+		this.listenTo(this.collection, "change", this.render);
 	},
 
 	// a = {}
@@ -31,6 +31,7 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 		subFeedViews.forEach(function(feedView) {
 			that.$el.append(feedView.render().$el);
 		});
+
 		return this;
 	}
 })

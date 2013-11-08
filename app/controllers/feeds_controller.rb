@@ -8,7 +8,6 @@ class FeedsController < ApplicationController
 
   def create
     @feed = Feed.find_or_create_by_url(params[:feed][:url], current_user.id)
-    debugger
 
     if @feed
       render :json => @feed, :include => :entries
