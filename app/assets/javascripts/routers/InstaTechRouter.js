@@ -11,22 +11,7 @@ InstaTech.Router = Backbone.Router.extend({
 		})
 
 		this._swapFeedsView(userFeedsView);
-
-		// $('.panel-primary').click(function() {
-		// 	$(this).ClassyWiggle('start');
-		// 	// $('.panel-primary').wiggle('start');
-		// });
-
-		$('.panel-primary').draggable({
-			revert: true,
-			start: function() {
-				$(this).ClassyWiggle('start');
-			},
-
-			stop: function() {
-				$(this).ClassyWiggle('stop');
-			}
-		});
+		InstaTech.Store.turnElementDraggable('.panel-primary');
 	},
 
 	showFeed: function(feed_id) {
@@ -35,17 +20,7 @@ InstaTech.Router = Backbone.Router.extend({
 		});
 
 		this._swapFeedsView(entriesView);
-
-		$('.panel-default').draggable({
-			revert: true,
-			start: function() {
-				$(this).ClassyWiggle('start');
-			},
-
-			stop: function() {
-				$(this).ClassyWiggle('stop');
-			}
-		});
+		InstaTech.Store.turnElementDraggable('.panel-default');
 	},
 
 	//////////////////////////////////////////
@@ -55,7 +30,7 @@ InstaTech.Router = Backbone.Router.extend({
 			this._prevFeedsView.remove();
 		}
 
-		this._prevFeedsView = newFeedsView
+		this._prevFeedsView = newFeedsView;
 		$('#feed-view').html(newFeedsView.render().$el);
 	}
 
