@@ -12,7 +12,7 @@ group :development do
   gem 'pry-rails'
 end
 
-gem 'debugger'
+gem 'byebug'
 
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
