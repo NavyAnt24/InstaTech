@@ -10,6 +10,9 @@
 
 things to do for project
 
+1) page not rerendering on adding news source
+2) add loading bar when adding news source, it takes a while
+
   1) build home page (use Twitter bootstrap)
   2) Build feed page for user after they sign in (do this in backbone)
   3) Allow user to add feeds (have a feed index page, but also allow the user to input a new feed themselves)

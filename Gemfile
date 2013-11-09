@@ -12,6 +12,8 @@ group :development do
   gem 'pry-rails'
 end
 
+gem 'debugger'
+
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'bootstrap-sass'

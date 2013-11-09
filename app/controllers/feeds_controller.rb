@@ -7,6 +7,7 @@ class FeedsController < ApplicationController
   end
 
   def create
+    debugger
     @feed = Feed.find_or_create_by_url(params[:feed][:url], current_user.id)
 
     if @feed

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105232526) do
+ActiveRecord::Schema.define(:version => 20131109070611) do
 
   create_table "comments", :force => true do |t|
     t.string   "body"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20131105232526) do
   end
 
   create_table "entries", :force => true do |t|
-    t.string   "guid",         :null => false
-    t.string   "link",         :null => false
-    t.string   "title",        :null => false
+    t.text     "guid",         :null => false
+    t.text     "link",         :null => false
+    t.text     "title",        :null => false
     t.datetime "published_at", :null => false
     t.integer  "feed_id",      :null => false
     t.text     "json",         :null => false

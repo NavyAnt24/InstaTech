@@ -14,17 +14,16 @@ $(document).ready(function(){
 
 	$('.save-feed').click(function() {
 		var formData = $('#add_news_source').serializeJSON();
-		console.log(formData);
 		var feed = new InstaTech.Models.Feed(formData.feed);
-		InstaTech.userFeeds.add(feed);
-		feed.save({
+		feed.save({}, {
 			success: function() {
-				alert('hello');
 				$('#add-news-modal').modal('hide');
-				$('.feed-url-input').val() = "";
-				Backbone.history.navigate("users/" + InstaTech.Store.currentUserId + "/feeds", {trigger: true});
+				$('.feed-url-input').text("");
+				InstaTech.userFeeds.add(feed);
+				// Backbone.history.navigate("users/" + InstaTech.Store.currentUserId + "/feeds", {trigger: true});
 			},
 			error: function(model, xhr) {
+				console.log('error saving feed');
 				console.log(xhr);
 			}
 		});
