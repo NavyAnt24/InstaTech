@@ -8,4 +8,14 @@
 
 <div class="panel-footer">
 	Published at: <%= entry.get('published_at') %>
+
+	<% if (entry.get('liked') === true) { liked = 'liked' } %>
+	<% if (entry.get('unliked') === true) { unliked = 'unliked' } %>
+	<% if (entry.get('liked') === undefined || entry.get('liked') === false) { liked = '' } %>
+	<% if (entry.get('unliked') === undefined || entry.get('unliked') === false) { unliked = '' } %>
+
+	<span class="glyphicon glyphicon-circle-arrow-up like <%= liked %>"
+		data-id="<%= entry.id %>"></span>
+	<span class="glyphicon glyphicon-circle-arrow-down unlike <%= unliked %>"
+		data-id="<%= entry.id %>"></span>
 </div>

@@ -12,3 +12,34 @@
 	margin-left: 30px;
 	margin-bottom: 30px;
 }
+
+.panel-title {
+	display: inline;
+}
+
+span.glyphicon {
+	float: right;
+	margin-left: 5px;
+}
+
+span.glyphicon-circle-arrow-up {
+	transition: color 0.5s;
+	&:hover {
+		color: #18BFF2;
+	}
+}
+
+span.glyphicon-circle-arrow-down {
+	transition: color 0.5s;
+	&:hover {
+		color: #F2185A;
+	}
+}
+
+.liked {
+	color: #18BFF2;
+}
+
+.unliked {
+	color: #F2185A;
+}

@@ -6,7 +6,33 @@ InstaTech.Views.EntryView = Backbone.View.extend({
 	},
 
 	events: {
-		"hover .entry_text" : "showEntryInfo"
+		"hover .entry_text" : "showEntryInfo",
+		"click .like" : "likeEntry",
+		"click .unlike" : "unlikeEntry"
+	},
+
+	//////////////////////////////////
+
+	likeEntry: function(event) {
+		// var entryId = $(event.currentTarget).attr('data-id');
+		// var feed = InstaTech.userFeeds.get(feedId);
+		entry = this.options.currentEntry;
+		entry.removeLikeOrUnlike();
+		
+		if (entry.get('liked') !== true) {
+			entry.like();
+		}
+	},
+
+	unlikeEntry: function(event) {
+		// var entryId = $(event.currentTarget).attr('data-id');
+		// var feed = InstaTech.userFeeds.get(feedId);
+		entry = this.options.currentEntry;
+		entry.removeLikeOrUnlike();
+
+		if (entry.get('unliked') !== true) {
+			entry.unlike();
+		}
 	},
 
 	render: function() {

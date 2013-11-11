@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password
   attr_reader :password
 
+  has_many :comments
+  has_many :likes
+
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   validates :session_token, :presence => true

@@ -4,6 +4,16 @@
 	<a href="#feeds/<%= feed.id %>/entries">
 		<h3 class="panel-title"><%= feed.get('title') %></h3>
 	</a>
+
+	<% if (feed.get('liked') === true) { liked = 'liked' } %>
+	<% if (feed.get('unliked') === true) { unliked = 'unliked' } %>
+	<% if (feed.get('liked') === undefined || feed.get('liked') === false) { liked = '' } %>
+	<% if (feed.get('unliked') === undefined || feed.get('unliked') === false) { unliked = '' } %>
+
+	<span class="glyphicon glyphicon-circle-arrow-up like <%= liked %>"
+		data-id="<%= feed.id %>"></span>
+	<span class="glyphicon glyphicon-circle-arrow-down unlike <%= unliked %>"
+		data-id="<%= feed.id %>"></span>
 </div>
 
 <div class="panel-body">

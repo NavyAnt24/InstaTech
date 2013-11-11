@@ -2,7 +2,8 @@ class Feed < ActiveRecord::Base
   attr_accessible :url, :title, :user_id
 
   has_many :entries, :dependent => :destroy
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, :dependent => :destroy
+  has_many :likes, as: :likeable, :dependent => :destroy
 
   def self.find_or_create_by_url(url, user_id)
     feed = Feed.where(:url => url, :user_id => user_id).first
@@ -38,6 +39,25 @@ class Feed < ActiveRecord::Base
     rescue SimpleRssError
       return false
     end
+  end
+
+  def liked
+    Like.exists?(:likeable_id => self.id,
+      :likeable_type => "Feed",
+      :like_or_unlike => 1,
+      :user_id => self.user_id)
+  end
+
+  def unliked
+    Like.exists?(:likeable_id => self.id,
+      :likeable_type => "Feed",
+      :like_or_unlike => -1,
+      :user_id => self.user_id)
+  end
+
+  def as_json(options)
+    super(:include => [:entries], :methods => [:liked, :unliked])
+    # include comments later on
   end
 
 end

@@ -10,6 +10,8 @@
 
 things to do for project
 
+* Add omniauth to allow users to add feeds or entries to twitter/facebook/etc
+* Make sure I did add_index like and unlike correctly
 1) page not rerendering on adding news source
 2) add loading bar when adding news source, it takes a while
 
