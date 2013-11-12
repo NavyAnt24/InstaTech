@@ -43,3 +43,16 @@ span.glyphicon-circle-arrow-down {
 .unliked {
 	color: #F2185A;
 }
+
+.active-trash-can {
+	background-color: #808080;
+/*	transition: background-color 0.5s;
+	&:hover {
+		background-color: #969696;
+	}*/
+}
+
+.hover-trash-can {
+	background-color: #A8A8A8;
+	color: #A8A8A8;
+}

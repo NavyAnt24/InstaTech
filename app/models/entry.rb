@@ -32,7 +32,6 @@ class Entry < ActiveRecord::Base
 
   def as_json(options)
     super(:include => [:feed], :methods => [:liked, :unliked])
-    # super(:include => [:entries], :methods => [:liked, :unliked])
     # include comments later on
   end
 

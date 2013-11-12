@@ -1,8 +1,28 @@
 InstaTech.Router = Backbone.Router.extend({
 
 	routes: {
+		"" : "userFeeds",
+		"feeds/allStories" : "allEntries",
 		"users/:id/feeds" : "userFeeds",
 		"feeds/:feed_id/entries" : "showFeed"
+	},
+
+	allEntries: function() {
+		allStories = new InstaTech.Collections.Entries([], {feed: 1})
+		InstaTech.userFeeds.forEach(function (feed) {
+			feed.entries().forEach(function(entry) {
+				allStories.add(entry);
+			});
+		});
+
+		var allEntriesView = new InstaTech.Views.EntriesView({
+			collection: allStories
+		});
+
+		this._swapFeedsView(allEntriesView);
+		// InstaTech.Store.turnElementDraggable('.panel-default');
+		InstaTech.Store.turnElementDraggable('.panel');
+		InstaTech.Store.turnElementDroppable('.trash-can');
 	},
 
 	userFeeds: function() {
@@ -12,6 +32,9 @@ InstaTech.Router = Backbone.Router.extend({
 
 		this._swapFeedsView(userFeedsView);
 		InstaTech.Store.turnElementDraggable('.panel-primary');
+		InstaTech.Store.turnElementDroppable('.trash-can');
+
+		InstaTech.Store.turnElementDroppable('.droponme');
 	},
 
 	showFeed: function(feed_id) {
@@ -21,6 +44,7 @@ InstaTech.Router = Backbone.Router.extend({
 
 		this._swapFeedsView(entriesView);
 		InstaTech.Store.turnElementDraggable('.panel-default');
+		InstaTech.Store.turnElementDroppable('.trash-can');
 	},
 
 	//////////////////////////////////////////

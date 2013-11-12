@@ -1,9 +1,9 @@
 InstaTech::Application.routes.draw do
   resources :users, :only => [:create, :new, :show]
 
-  resources :feeds, :only => [:index, :create] do
+  resources :feeds, :only => [:index, :create, :destroy] do
     resources :comments, :only => [:index, :create]
-    resources :entries, :only => [:index]
+    resources :entries, :only => [:index, :destroy]
     resource :like, :only => [:create, :destroy]
   end
 

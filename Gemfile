@@ -12,7 +12,8 @@ group :development do
   gem 'pry-rails'
 end
 
-gem 'byebug'
+# gem 'byebug'
+gem 'debugger'
 
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
@@ -22,3 +23,4 @@ gem 'jquery-ui-rails'
 gem 'pg'
 gem 'simple-rss'
   require 'open-uri'
+gem 'twitter'

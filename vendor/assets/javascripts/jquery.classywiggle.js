@@ -22,7 +22,7 @@
 
             },
             onWiggleStop: function(o) {
-                
+
             }
         }, options);
         var methods = {

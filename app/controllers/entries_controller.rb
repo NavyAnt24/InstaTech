@@ -11,4 +11,14 @@ class EntriesController < ApplicationController
     render :json => feed.entries
   end
 
+  def destroy
+    @entry = Entry.find(params[:id])
+
+    if @entry.destroy
+      render nothing: true
+    else
+      render @entry.errors.full_messages
+    end
+  end
+
 end

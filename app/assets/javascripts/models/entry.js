@@ -7,8 +7,8 @@ InstaTech.Models.Entry = Backbone.Model.extend({
 		$.ajax({
 			type: "POST",
 			url: "/entries/" + entry.id + "/like",
-			data: { like_or_unlike: 1, likeable_type: "Entry" },
-			
+			data: { like_or_unlike: 1, likeable_type: "Entry", item_id: entry.id },
+
 			success: function(data) {
 				entry.set('liked', true);
 			},
@@ -23,7 +23,7 @@ InstaTech.Models.Entry = Backbone.Model.extend({
 
 		$.ajax({
 			type: "DELETE",
-			data: { likeable_type: "Entry" },
+			data: { likeable_type: "Entry", item_id: entry.id },
 			url: "/entries/" + entry.id + "/like",
 
 			success: function() {
@@ -39,8 +39,8 @@ InstaTech.Models.Entry = Backbone.Model.extend({
 		$.ajax({
 			type: "POST",
 			url: "/entries/" + entry.id + "/like",
-			data: { like_or_unlike: -1, likeable_type: "Entry" },
-			
+			data: { like_or_unlike: -1, likeable_type: "Entry", item_id: entry.id },
+
 			success: function() {
 				entry.set('unliked', true);
 			},
@@ -49,4 +49,5 @@ InstaTech.Models.Entry = Backbone.Model.extend({
 			}
 		});
 	},
+
 });

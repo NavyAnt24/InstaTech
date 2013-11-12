@@ -7,8 +7,8 @@ InstaTech.Models.Feed = Backbone.Model.extend({
 		$.ajax({
 			type: "POST",
 			url: "/feeds/" + feed.id + "/like",
-			data: { like_or_unlike: 1, likeable_type: "Feed" },
-			
+			data: { like_or_unlike: 1, likeable_type: "Feed", item_id: feed.id },
+
 			success: function(data) {
 				feed.set('liked', true);
 			},
@@ -23,7 +23,7 @@ InstaTech.Models.Feed = Backbone.Model.extend({
 
 		$.ajax({
 			type: "DELETE",
-			data: { likeable_type: "Feed" },
+			data: { likeable_type: "Feed", item_id: feed.id },
 			url: "/feeds/" + feed.id + "/like",
 
 			success: function() {
@@ -39,8 +39,8 @@ InstaTech.Models.Feed = Backbone.Model.extend({
 		$.ajax({
 			type: "POST",
 			url: "/feeds/" + feed.id + "/like",
-			data: { like_or_unlike: -1, likeable_type: "Feed" },
-			
+			data: { like_or_unlike: -1, likeable_type: "Feed", item_id: feed.id },
+
 			success: function() {
 				feed.set('unliked', true);
 			},

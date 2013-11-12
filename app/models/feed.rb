@@ -56,7 +56,7 @@ class Feed < ActiveRecord::Base
   end
 
   def as_json(options)
-    super(:include => [:entries], :methods => [:liked, :unliked])
+    super(:include => [:entries => {:methods => [:liked, :unliked]}], :methods => [:liked, :unliked])
     # include comments later on
   end
 
