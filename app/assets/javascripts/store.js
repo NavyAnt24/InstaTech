@@ -4,14 +4,14 @@ InstaTech.Store = {
 			revert: true,
 			start: function() {
 				$(this).ClassyWiggle('start');
+				$(this).css('z-index', 10);
 				// $(this).css('position', 'absolute');
-				// $(this).css('z-index', 100000);
 			},
 
 			stop: function() {
 				$(this).css('z-index', 'auto');
-				// $(this).css('position', 'relative');
 				$(this).ClassyWiggle('stop');
+				// $(this).css('position', 'relative');
 			}
 		});
 	},
@@ -38,7 +38,15 @@ InstaTech.Store = {
 
 				} else if (ui.draggable.hasClass("singleEntry")) {
 					entryId = ui.draggable.find("span").attr('data-id');
-
+					feedId = ui.draggable.find("span").attr('data-feed-id');
+					$.ajax({
+						type: "DELETE",
+						url: "/feeds/" + feedId + "/entries/" + entryId,
+						success: function() {
+							console.log("deleted entry!");
+							InstaTech.userFeeds.get(feedId).entries().remove(entryId);
+						}
+					});
 				}
 			}
 		});

@@ -22,7 +22,7 @@ InstaTech.Views.FeedView = Backbone.View.extend({
 		var feedId = $(event.currentTarget).attr('data-id');
 		var feed = InstaTech.userFeeds.get(feedId);
 		feed.removeLikeOrUnlike();
-		
+
 		if (feed.get('liked') !== true) {
 			feed.like();
 		}

@@ -11,6 +11,10 @@ InstaTech.Views.EntriesView = Backbone.View.extend({
 			subEntryViews.push(subEntryView);
 		});
 
+		twitterFeedView = new InstaTech.Views.TwitterFeedView({
+			// twitterFeed: // ADD TWITTER FEED HERE!
+		});
+
 		this.listenTo(this.collection, "add remove sync", this.render);
 		this.listenTo(this.collection, "change", this.render);
 	},

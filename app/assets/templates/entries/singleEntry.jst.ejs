@@ -15,7 +15,7 @@
 	<% if (entry.get('unliked') === undefined || entry.get('unliked') === false) { unliked = '' } %>
 
 	<span class="glyphicon glyphicon-circle-arrow-up like <%= liked %>"
-		data-id="<%= entry.id %>"></span>
+		data-id="<%= entry.id %>" data-feed-id="<%= entry.get('feed_id') %>"></span>
 	<span class="glyphicon glyphicon-circle-arrow-down unlike <%= unliked %>"
-		data-id="<%= entry.id %>"></span>
+		data-id="<%= entry.id %>" data-feed-id="<%= entry.get('feed_id') %>"></span>
 </div>

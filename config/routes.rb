@@ -5,6 +5,7 @@ InstaTech::Application.routes.draw do
     resources :comments, :only => [:index, :create]
     resources :entries, :only => [:index, :destroy]
     resource :like, :only => [:create, :destroy]
+    resources :tweets, :only => [:index, :create]
   end
 
   resources :entries, :only => [] do

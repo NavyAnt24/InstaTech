@@ -39,10 +39,18 @@ things to do for project
 	1) Twitter - add a twitter feed both to the main feed page (which consolidates
 		all of the feeds, make sure they alternate), and also to each feed page (do
 			 this first). Facebook. Google+. LinkedIn. (https://github.com/sferik/twitter).
-			 http://stackoverflow.com/questions/10169841/display-a-twitter-feed-from-a-rails-app
+			 http://stackoverflow.com/questions/10169841/display-a-twitter-feed-from-a-rails-app.
+
+			 Replace Twitter Website Url for this app on the Twitter developer site once
+				 you get a domain name
 	2) OmniAuth. Allow the user to add their own twitter feed
 	3) User Comments
 	4) Allow users to email link and title of article to themselves
+	5) Browse feeds and search for new feeds
+	6) Add Pace, found on jQuery Rain
+	7) Fix Tweet area: http://jsfiddle.net/KcDd3/
+	8) Fix tweets controller to make sure you are not adding the same feed twice (if
+		you are, then just delete the old tweets)
 
 
 	Get Figaro working (https://github.com/laserlemon/figaro)
