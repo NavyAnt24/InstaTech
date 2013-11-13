@@ -4,6 +4,7 @@ class Feed < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
   has_many :comments, as: :commentable, :dependent => :destroy
   has_many :likes, as: :likeable, :dependent => :destroy
+  has_many :tweets, :dependent => :destroy
 
   def self.find_or_create_by_url(url, user_id)
     feed = Feed.where(:url => url, :user_id => user_id).first

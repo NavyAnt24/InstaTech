@@ -3,6 +3,11 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 
 	initialize: function(options) {
 		this.options = options;
+		this.tweets = undefined
+
+		this.createTweets();
+		this.getTweets();
+
 		// this.listenTo(this.options.currentFeed, "add remove sync", this.render);
 		// this.listenTo(this.options.currentFeed, "change", this.render);
 	},
@@ -16,7 +21,35 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 
 	///////////////////////
 
+	createTweets: function() {
+		$.ajax({
+			type: "POST",
+			url: "/feeds/" + this.options.feed.id + "/tweets",
+			data: { feed_url: this.options.feed.get('url') },
 
+			success: function() {
+				console.log("created tweets in database!");
+			},
+			error: function(model, xhr) {
+				console.log(xhr);
+			}
+		});
+	},
+
+	getTweets: function() {
+		$.ajax({
+			url: "/feeds/" + this.options.feed.id + "/tweets",
+			// data: { feed_url: this.options.feed.get('url') },
+
+			success: function(data) {
+				this.tweets = data;
+				console.log(data);
+			},
+			error: function(model, xhr) {
+				console.log(xhr);
+			}
+		});
+	},
 
 	render: function() {
 		var renderedContent = this.template({

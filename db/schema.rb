@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131110035602) do
+ActiveRecord::Schema.define(:version => 20131112232924) do
 
   create_table "comments", :force => true do |t|
     t.string   "body"
@@ -81,6 +81,19 @@ ActiveRecord::Schema.define(:version => 20131110035602) do
 
   add_index "likes", ["user_id", "likeable_id", "likeable_type"], :name => "index_likes_on_user_id_and_likeable_id_and_likeable_type", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
+  create_table "tweets", :force => true do |t|
+    t.string   "text",                    :null => false
+    t.datetime "time",                    :null => false
+    t.integer  "tweet_id",   :limit => 8
+    t.string   "username",                :null => false
+    t.string   "feed_id",                 :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "tweets", ["feed_id"], :name => "index_tweets_on_feed_id"
+  add_index "tweets", ["tweet_id"], :name => "index_tweets_on_tweet_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false
