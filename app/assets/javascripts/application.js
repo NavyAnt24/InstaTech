@@ -19,7 +19,6 @@
 //= require backbone
 //= require insta_tech
 //= require bootstrap
-//= require jquery.tinyscrollbar
 //= require jquery.classywiggle
 //= require jquery.serializeJSON
 //= require_tree ../templates

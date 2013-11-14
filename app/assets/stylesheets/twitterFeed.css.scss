@@ -1,17 +1,19 @@
 .twitterFeed {
-    width: 305px;
-    height: 425px;
-    border-radius: 10px;
-    background-color: rgba(51, 51, 51, 0.5);
-		margin-right: 5px;
+  width: 305px;
+  height: 425px;
+  border-radius: 10px;
+  background-color: rgba(51, 51, 51, 0.5);
+	margin-right: 5px;
+	overflow-y: auto;
+	border: 1px solid #0084B4;
 }
 
 .tweetBoxHeader {
-    margin-left: 13px;
-    padding-top: 10px;
-    font-family: Arial;
-    font-weight: bold;
-    font-style:italic;
+  margin-left: 13px;
+  padding-top: 10px;
+  font-family: Arial;
+  font-weight: bold;
+  font-style:italic;
 }
 
 hr {

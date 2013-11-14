@@ -5,6 +5,7 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		this.options = options;
 		this.tweets = undefined
 		this.singleTweetViews = [];
+		this.singleTweetViewsDup = [];
 
 		this.createTweets();
 		this.getTweets();
@@ -64,9 +65,24 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 			that.singleTweetViews.push(singleTweetView);
 		});
 
-		this.singleTweetViews.forEach(function(singleTweetView) {
-			that.$el.find(".tweets").prepend(singleTweetView.render().$el);
-		});
+		this.singleTweetViewsDup = this.singleTweetViews.slice(0);
+		this.addTweets();
+	},
+
+	addTweets: function() {
+		console.log('this!!');
+		console.log(this);
+		if (this.singleTweetViewsDup.length > 0) {
+			this.prependOneTweet();
+			setInterval(this.addTweets, 5000);
+		} else if (this.singleTweetViewDup.length === 0) {
+			clearInterval();
+		}
+	},
+
+	prependOneTweet: function() {
+		singleTweetView = this.singleTweetViewsDup.shift();
+		this.$el.find(".tweets").prepend(singleTweetView.render().$el);
 	},
 
 	render: function() {
@@ -77,9 +93,6 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		});
 
 		this.$el.html(renderedContent);
-
-		console.log(this.singleTweetViews.length);
-
 		return this;
 	}
 });
