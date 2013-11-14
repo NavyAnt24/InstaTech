@@ -1,55 +1,58 @@
 InstaTech.Store = {
 	turnElementDraggable: function (className) {
-		$(className).draggable({
-			revert: true,
-			start: function() {
-				$(this).ClassyWiggle('start');
-				$(this).css('z-index', 10);
-				// $(this).css('position', 'absolute');
-			},
+		if ($(className)) {
+			$(className).draggable({
+				revert: true,
+				start: function() {
+					$(this).ClassyWiggle('start');
+					$(this).css('z-index', 10);
+				},
 
-			stop: function() {
-				$(this).css('z-index', 'auto');
-				$(this).ClassyWiggle('stop');
-				// $(this).css('position', 'relative');
-			}
-		});
+				stop: function() {
+					$(this).css('z-index', 'auto');
+					$(this).ClassyWiggle('stop');
+				}
+			});
+		}
+
 	},
 
 	turnElementDroppable: function(className) {
-		$(className).droppable({
-			accept: '.panel',
-			tolerance: 'pointer',
-			hoverClass: 'hover-trash-can',
-			activeClass: 'active-trash-can',
-			drop: function(event, ui) {
-				ui.draggable.draggable("destroy");
-				ui.draggable.toggle('explode');
-				if (ui.draggable.hasClass("singleFeed")) {
-					feedId = ui.draggable.find("span").attr('data-id');
-					$.ajax({
-						type: "DELETE",
-						url: "/feeds/" + feedId,
-						success: function() {
-							console.log('deleted feed!');
-							InstaTech.userFeeds.remove(feedId);
-						}
-					});
+		if ($(className)) {
+			$(className).droppable({
+				accept: '.panel',
+				tolerance: 'pointer',
+				hoverClass: 'hover-trash-can',
+				activeClass: 'active-trash-can',
+				drop: function(event, ui) {
+					ui.draggable.draggable("destroy");
+					ui.draggable.toggle('explode');
+					if (ui.draggable.hasClass("singleFeed")) {
+						feedId = ui.draggable.find("span").attr('data-id');
+						$.ajax({
+							type: "DELETE",
+							url: "/feeds/" + feedId,
+							success: function() {
+								// console.log('deleted feed!');
+								InstaTech.userFeeds.remove(feedId);
+							}
+						});
 
-				} else if (ui.draggable.hasClass("singleEntry")) {
-					entryId = ui.draggable.find("span").attr('data-id');
-					feedId = ui.draggable.find("span").attr('data-feed-id');
-					$.ajax({
-						type: "DELETE",
-						url: "/feeds/" + feedId + "/entries/" + entryId,
-						success: function() {
-							console.log("deleted entry!");
-							InstaTech.userFeeds.get(feedId).entries().remove(entryId);
-						}
-					});
+					} else if (ui.draggable.hasClass("singleEntry")) {
+						entryId = ui.draggable.find("span").attr('data-id');
+						feedId = ui.draggable.find("span").attr('data-feed-id');
+						$.ajax({
+							type: "DELETE",
+							url: "/feeds/" + feedId + "/entries/" + entryId,
+							success: function() {
+								// console.log("deleted entry!");
+								InstaTech.userFeeds.get(feedId).entries().remove(entryId);
+							}
+						});
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 
 

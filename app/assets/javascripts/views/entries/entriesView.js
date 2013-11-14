@@ -6,8 +6,9 @@ InstaTech.Views.EntriesView = Backbone.View.extend({
 		entries = this.collection;
 		subEntryViews = [];
 
-		this.listenTo(this.collection, "add remove sync", this.render);
-		this.listenTo(this.collection, "change", this.render);
+		this.listenTo(this.collection, "add remove", this.render);
+		// this.listenTo(this.collection, "add remove sync", this.render);
+		// this.listenTo(this.collection, "change", this.render);
 	},
 
 	////// MAKE SURE THIS WORKS!
@@ -42,14 +43,13 @@ InstaTech.Views.EntriesView = Backbone.View.extend({
 
 		subEntryViews.forEach(function(entryView) {
 			that.$el.find('.all-entries').append(entryView.render().$el);
-			// $('.all-entries').append(entryView.render().$el);
 		});
 
-		// this.$el.$('.twitterFeed').html(twitterFeedView.render().$el);
-		// $('.twitterFeed').html(twitterFeedView.render().$el);
 		that.$el.find('.twitter-feed').append(twitterFeedView.render().$el);
 
-		// this.$el.html(renderedContent);
+		InstaTech.Store.turnElementDraggable('.panel');
+		InstaTech.Store.turnElementDroppable('.trash-can');
+
 		return this;
 	},
 

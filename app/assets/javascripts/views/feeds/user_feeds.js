@@ -2,20 +2,14 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 	template: JST['feeds/index'],
 
 	initialize: function() {
-		feeds = this.collection;
-		subFeedViews = [];
-		feeds.each(function(feed) {
-			subView = new InstaTech.Views.FeedView({
-				currentFeed: feed
-			});
-			subFeedViews.push(subView);
-		});
+		this.feeds = this.collection;
+		this.subFeedViews = [];
 
 		this.listenTo(this.collection, "add remove sync", this.render);
 		this.listenTo(this.collection, "change", this.render);
 	},
 
-	render: function() {
+	render: function(event) {
 		var that = this;
 
 		var renderedContent = this.template({
@@ -23,15 +17,29 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 			feeds: this.collection,
 		});
 
-		subFeedViews.forEach(function(feedView) {
+		this.leave();
+		this.subFeedViews = [];
+		var that = this;
+
+		this.feeds.each(function(feed) {
+			subView = new InstaTech.Views.FeedView({
+				currentFeed: feed
+			});
+			that.subFeedViews.push(subView);
+		});
+
+		this.subFeedViews.forEach(function(feedView) {
 			that.$el.append(feedView.render().$el);
 		});
+
+		InstaTech.Store.turnElementDraggable('.panel');
+		InstaTech.Store.turnElementDroppable('.trash-can');
 
 		return this;
 	},
 
 	leave: function() {
-		subFeedViews.forEach(function(feedView) {
+		this.subFeedViews.forEach(function(feedView) {
 			feedView.remove();
 		});
 	}

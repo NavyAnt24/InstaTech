@@ -5,7 +5,6 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		this.options = options;
 		this.tweets = undefined
 		this.singleTweetViews = [];
-		this.singleTweetViewsDup = [];
 
 		this.createTweets();
 		this.getTweets();
@@ -15,8 +14,7 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 	},
 
 	events: {
-		// "click .like" : "likeFeed",
-		// "click .unlike" : "unlikeFeed"
+
 	},
 
 	///////////////////////
@@ -28,7 +26,7 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 			data: { feed_url: this.options.feed.get('url') },
 
 			success: function() {
-				console.log("created tweets in database!");
+				// console.log("created tweets in database!");
 			},
 			error: function(model, xhr) {
 				console.log(xhr);
@@ -40,15 +38,13 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		var that = this;
 
 		$.ajax({
-			url: "/feeds/" + this.options.feed.id + "/tweets",
+			url: "/feeds/" + that.options.feed.id + "/tweets",
 			// data: { feed_url: this.options.feed.get('url') },
 
 			success: function(data) {
 				that.tweets = data;
-				that.tweets.reverse();
-				console.log("I've got the tweets!");
+				// that.tweets.reverse(); DON'T NEED TO DO THIS. THEY ARE IN ORDER
 				that.renderSingleTweetViews();
-				// that.render();
 			},
 			error: function(model, xhr) {
 				console.log(xhr);
@@ -65,24 +61,24 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 			that.singleTweetViews.push(singleTweetView);
 		});
 
-		this.singleTweetViewsDup = this.singleTweetViews.slice(0);
 		this.addTweets();
+		this.intervalId = window.setInterval(this.addTweets.bind(this), 5000);
 	},
 
 	addTweets: function() {
-		console.log('this!!');
-		console.log(this);
-
-		if (this.singleTweetViewsDup.length > 0) {
+		if (this.singleTweetViews.length > 0) {
 			this.prependOneTweet();
-			setTimeout(this.addTweets.bind(this), 5000);
-		} else if (this.singleTweetViewsDup.length === 0) {
-			clearInterval();
+		} else if (this.singleTweetViews.length === 0) {
+			window.clearInterval(this.intervalId);
+			this.leave(); // Clear out the old singleTweetViews
+			this.createTweets();
+			this.getTweets();
+			this.$el.find(".tweets").html("");
 		}
 	},
 
 	prependOneTweet: function() {
-		singleTweetView = this.singleTweetViewsDup.shift();
+		singleTweetView = this.singleTweetViews.shift();
 		this.$el.find(".tweets").prepend(singleTweetView.render().$el);
 	},
 
@@ -90,10 +86,19 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		var that = this;
 
 		var renderedContent = this.template({
-			feed: this.options.feed
+			feed: this.options.feed,
+			searchTerm: this.options.feed.get('url').split('.')[1]
 		});
 
 		this.$el.html(renderedContent);
 		return this;
+	},
+
+	leave: function() {
+		this.singleTweetViews.forEach(function(singleTweetView) {
+			singleTweetView.remove();
+		});
+		this.singleTweetViews = [];
+		this.tweets = undefined;
 	}
 });

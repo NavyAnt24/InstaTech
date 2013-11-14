@@ -2,12 +2,6 @@ class FeedsController < ApplicationController
 
   def index
     @feeds = Feed.where(:user_id => current_user.id)
-    # @feeds = Feed.where(:user_id => current_user.id).includes(:entries)
-    # super(:include => [:entries], :methods => [:liked, :unliked])
-    # => {:include => [:liked, :unliked]})
-    # render :json => @feeds, :include => {:entries => {include: :likes}}
-
-    # render :json => @feeds.to_json({:include => {:entries => {:methods => :liked}}})
     render :json => @feeds
   end
 

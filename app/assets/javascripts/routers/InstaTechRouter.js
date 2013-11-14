@@ -21,9 +21,6 @@ InstaTech.Router = Backbone.Router.extend({
     });
 
     this._swapFeedsView(allEntriesView);
-    // InstaTech.Store.turnElementDraggable('.panel-default');
-    InstaTech.Store.turnElementDraggable('.panel');
-    InstaTech.Store.turnElementDroppable('.trash-can');
   },
 
 	userFeeds: function() {
@@ -32,8 +29,6 @@ InstaTech.Router = Backbone.Router.extend({
 		})
 
 		this._swapFeedsView(userFeedsView);
-		InstaTech.Store.turnElementDraggable('.panel-primary');
-		InstaTech.Store.turnElementDroppable('.trash-can');
 	},
 
 	showFeed: function(feed_id) {
@@ -43,8 +38,6 @@ InstaTech.Router = Backbone.Router.extend({
 		});
 
 		this._swapFeedsView(entriesView);
-		InstaTech.Store.turnElementDraggable('.panel-default');
-		InstaTech.Store.turnElementDroppable('.trash-can');
 	},
 
 	//////////////////////////////////////////
@@ -57,6 +50,9 @@ InstaTech.Router = Backbone.Router.extend({
 
 		this._prevFeedsView = newFeedsView;
 		$('#feed-view').html(newFeedsView.render().$el);
+
+		InstaTech.Store.turnElementDraggable('.panel');
+		InstaTech.Store.turnElementDroppable('.trash-can');
 	}
 
 });

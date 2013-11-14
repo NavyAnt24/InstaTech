@@ -3,6 +3,8 @@ InstaTech.Views.EntryView = Backbone.View.extend({
 
 	initialize: function(options) {
 		this.options = options;
+
+		this.listenTo(this.options.currentEntry, "sync change", this.render);
 	},
 
 	events: {
@@ -14,19 +16,15 @@ InstaTech.Views.EntryView = Backbone.View.extend({
 	//////////////////////////////////
 
 	likeEntry: function(event) {
-		// var entryId = $(event.currentTarget).attr('data-id');
-		// var feed = InstaTech.userFeeds.get(feedId);
 		entry = this.options.currentEntry;
 		entry.removeLikeOrUnlike();
-		
+
 		if (entry.get('liked') !== true) {
 			entry.like();
 		}
 	},
 
 	unlikeEntry: function(event) {
-		// var entryId = $(event.currentTarget).attr('data-id');
-		// var feed = InstaTech.userFeeds.get(feedId);
 		entry = this.options.currentEntry;
 		entry.removeLikeOrUnlike();
 

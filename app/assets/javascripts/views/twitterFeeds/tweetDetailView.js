@@ -16,7 +16,7 @@ InstaTech.Views.TweetDetailView = Backbone.View.extend({
 
 	render: function() {
 		var renderedContent = this.template({
-			status: this.options.status
+			status: this.options.status,
 		});
 
 		this.$el.html(renderedContent);

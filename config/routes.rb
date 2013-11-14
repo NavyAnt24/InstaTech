@@ -6,6 +6,7 @@ InstaTech::Application.routes.draw do
     resources :entries, :only => [:index, :destroy]
     resource :like, :only => [:create, :destroy]
     resources :tweets, :only => [:index, :create]
+    resource :tweets, :only => [:destroy]
   end
 
   resources :entries, :only => [] do

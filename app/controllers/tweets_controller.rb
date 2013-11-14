@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     search_term = params[:feed_url].split('.')[1]
 
     Twitter.search( search_term,
-                    :count => 50,
+                    :count => 30,
                     :result_type => "recent",
                     :lang => "en").results.map do |status|
       text = status.text
@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
                     :feed_id => params[:feed_id].to_i,
                     :name => name
                   )
+                  puts time
     end
 
     render :nothing => true

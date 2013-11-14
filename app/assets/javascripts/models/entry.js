@@ -21,16 +21,18 @@ InstaTech.Models.Entry = Backbone.Model.extend({
 	removeLikeOrUnlike: function() {
 		var entry = this;
 
-		$.ajax({
-			type: "DELETE",
-			data: { likeable_type: "Entry", item_id: entry.id },
-			url: "/entries/" + entry.id + "/like",
+		if (entry.get('liked') === true || entry.get('unliked') === true) {
+			$.ajax({
+				type: "DELETE",
+				data: { likeable_type: "Entry", item_id: entry.id },
+				url: "/entries/" + entry.id + "/like",
 
-			success: function() {
-				entry.set('liked', false);
-				entry.set('unliked', false);
-			}
-		});
+				success: function() {
+					entry.set('liked', false);
+					entry.set('unliked', false);
+				}
+			});
+		}
 	},
 
 	unlike: function() {
