@@ -78,7 +78,7 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 		} else if (this.singleTweetViewDup.length === 0) {
 			clearInterval();
 		}
-	},
+	};,
 
 	prependOneTweet: function() {
 		singleTweetView = this.singleTweetViewsDup.shift();
