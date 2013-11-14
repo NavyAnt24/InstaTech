@@ -85,9 +85,10 @@ ActiveRecord::Schema.define(:version => 20131112232924) do
   create_table "tweets", :force => true do |t|
     t.string   "text",                    :null => false
     t.datetime "time",                    :null => false
-    t.integer  "tweet_id",   :limit => 8
+    t.integer  "tweet_id",   :limit => 8, :null => false
     t.string   "username",                :null => false
     t.string   "feed_id",                 :null => false
+    t.string   "name",                    :null => false
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end

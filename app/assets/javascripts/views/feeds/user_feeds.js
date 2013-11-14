@@ -28,5 +28,11 @@ InstaTech.Views.UserFeedsView = Backbone.View.extend({
 		});
 
 		return this;
+	},
+
+	leave: function() {
+		subFeedViews.forEach(function(feedView) {
+			feedView.remove();
+		});
 	}
 })

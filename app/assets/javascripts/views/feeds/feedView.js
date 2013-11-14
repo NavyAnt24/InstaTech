@@ -5,10 +5,6 @@ InstaTech.Views.FeedView = Backbone.View.extend({
 		this.options = options;
 		this.listenTo(this.options.currentFeed, "add remove sync", this.render);
 		this.listenTo(this.options.currentFeed, "change", this.render);
-
-		twitterFeedView = new InstaTech.Views.TwitterFeedView({
-			feed: this.options.currentFeed
-		});
 	},
 
 	////// MAKE SURE THIS WORKS!

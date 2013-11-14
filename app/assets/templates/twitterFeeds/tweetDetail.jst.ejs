@@ -1,0 +1,16 @@
+<div class="singleTweet">
+	<div class="tweet-content">
+		<a href="https://twitter.com/<%= status.username %>">
+			<span class="name-of-user"><%= status.name %></span>
+			<span class="tweet-username"> @<%= status.username %></span>
+		</a>
+
+		<a href="https://twitter.com/<%= status.username %>/status/<%= status.tweet_id %>">
+			<span class="tweet-time"><%= $.timeago(status.time) %></span>
+		</a>
+
+		<div class="tweet-body">
+			<%= status.text %>
+		</div>
+	</div>
+</div>

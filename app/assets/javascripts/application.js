@@ -13,11 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.timeago
 //= require underscore
+//= require yummi-loader
 //= require backbone
-//= require jquery.classywiggle
 //= require insta_tech
 //= require bootstrap
+//= require jquery.tinyscrollbar
+//= require jquery.classywiggle
 //= require jquery.serializeJSON
 //= require_tree ../templates
 //= require_tree ./models

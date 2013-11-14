@@ -51,6 +51,7 @@ things to do for project
 	7) Fix Tweet area: http://jsfiddle.net/KcDd3/
 	8) Fix tweets controller to make sure you are not adding the same feed twice (if
 		you are, then just delete the old tweets)
+		9) Add scrollbar to tweets: http://baijs.nl/tinyscrollbar/
 
 
 	Get Figaro working (https://github.com/laserlemon/figaro)

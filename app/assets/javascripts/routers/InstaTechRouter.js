@@ -2,28 +2,29 @@ InstaTech.Router = Backbone.Router.extend({
 
 	routes: {
 		"" : "userFeeds",
-		"feeds/allStories" : "allEntries",
 		"users/:id/feeds" : "userFeeds",
-		"feeds/:feed_id/entries" : "showFeed"
+		"feeds/:feed_id/entries" : "showFeed",
+		"feeds/allStories" : "allEntries"
 	},
 
-	allEntries: function() {
-		allStories = new InstaTech.Collections.Entries([], {feed: 1})
-		InstaTech.userFeeds.forEach(function (feed) {
-			feed.entries().forEach(function(entry) {
-				allStories.add(entry);
-			});
-		});
+  allEntries: function() {
+    allStories = new InstaTech.Collections.Entries([], {feed: 1})
+    InstaTech.userFeeds.forEach(function (feed) {
+      feed.entries().forEach(function(entry) {
+              allStories.add(entry);
+      });
+    });
 
-		var allEntriesView = new InstaTech.Views.EntriesView({
-			collection: allStories
-		});
+    var allEntriesView = new InstaTech.Views.EntriesView({
+      collection: allStories,
+			feed: InstaTech.userFeeds.first()
+    });
 
-		this._swapFeedsView(allEntriesView);
-		// InstaTech.Store.turnElementDraggable('.panel-default');
-		InstaTech.Store.turnElementDraggable('.panel');
-		InstaTech.Store.turnElementDroppable('.trash-can');
-	},
+    this._swapFeedsView(allEntriesView);
+    // InstaTech.Store.turnElementDraggable('.panel-default');
+    InstaTech.Store.turnElementDraggable('.panel');
+    InstaTech.Store.turnElementDroppable('.trash-can');
+  },
 
 	userFeeds: function() {
 		var userFeedsView = new InstaTech.Views.UserFeedsView({
@@ -33,13 +34,12 @@ InstaTech.Router = Backbone.Router.extend({
 		this._swapFeedsView(userFeedsView);
 		InstaTech.Store.turnElementDraggable('.panel-primary');
 		InstaTech.Store.turnElementDroppable('.trash-can');
-
-		InstaTech.Store.turnElementDroppable('.droponme');
 	},
 
 	showFeed: function(feed_id) {
 		var entriesView = new InstaTech.Views.EntriesView({
-			collection: InstaTech.userFeeds.get( parseInt(feed_id) ).entries()
+			collection: InstaTech.userFeeds.get( parseInt(feed_id) ).entries(),
+			feed: InstaTech.userFeeds.get( parseInt(feed_id) )
 		});
 
 		this._swapFeedsView(entriesView);
@@ -51,6 +51,7 @@ InstaTech.Router = Backbone.Router.extend({
 
 	_swapFeedsView: function(newFeedsView) {
 		if (this._prevFeedsView) {
+			this._prevFeedsView.leave();
 			this._prevFeedsView.remove();
 		}
 
