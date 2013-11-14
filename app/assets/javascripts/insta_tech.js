@@ -13,15 +13,14 @@ $(document).ready(function(){
   InstaTech.initialize();
 
 	$('.save-feed').click(function() {
-		$('.save-feed').button('loading');
 		var formData = $('#add_news_source').serializeJSON();
 		var feed = new InstaTech.Models.Feed(formData.feed);
 		feed.save({}, {
 			success: function() {
 				$('#add-news-modal').modal('hide');
-				$('.save-feed').button('reset');
 				$('.feed-url-input').text("");
 				InstaTech.userFeeds.add(feed);
+				InstaTech.userFeedsView.render();
 				// Backbone.history.navigate("users/" + InstaTech.Store.currentUserId + "/feeds", {trigger: true});
 			},
 			error: function(model, xhr) {

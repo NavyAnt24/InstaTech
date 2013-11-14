@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
                     :time => time,
                     :tweet_id => tweet_id.to_s,
                     :username => username,
-                    :feed_id => params[:feed_id],
+                    :feed_id => params[:feed_id].to_i,
                     :name => name
                   )
     end

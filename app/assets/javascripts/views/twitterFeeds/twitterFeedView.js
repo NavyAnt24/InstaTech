@@ -72,10 +72,11 @@ InstaTech.Views.TwitterFeedView = Backbone.View.extend({
 	addTweets: function() {
 		console.log('this!!');
 		console.log(this);
+
 		if (this.singleTweetViewsDup.length > 0) {
 			this.prependOneTweet();
 			setTimeout(this.addTweets.bind(this), 5000);
-		} else if (this.singleTweetViewDup.length === 0) {
+		} else if (this.singleTweetViewsDup.length === 0) {
 			clearInterval();
 		}
 	},
