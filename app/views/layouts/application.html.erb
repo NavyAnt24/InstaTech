@@ -7,26 +7,35 @@
   <%= csrf_meta_tags %>
 
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').toggleClass('on off');
-	});
+		$(document).ready(function() {
+			// var windowHeight = $(window).height();
+			// $('.background-image').backgroundcover();
+			// $('.background-image').css('height', windowHeight);
+			// $('.background-image').css({opacity: 0});
+			// $('.background-image').animate({opacity: 1}, 600);
+			$('body').toggleClass('on off');
+		});
 	</script>
 
 </head>
 <body class="off">
-	<%= render 'layouts/header' %>
-	<div class="backbone-container fadein scaleInv anim_1">
+	<div id="wrap">
+		<%= render 'layouts/header' %>
+		<div class="backbone-container fadein scaleInv anim_1">
 
-		<div class="inner-body fadein scaleInv anim_2">
-			<%= yield %>
+			<div class="inner-body fadein scaleInv anim_2">
+				<%= yield %>
 
-			<div id="feed-view">
+				<div id="feed-view">
+				</div>
+
+			</div>
+
+			<div class= "body-footer fadein scaleInv anim_3">
+				<%= render 'layouts/footer' %>
 			</div>
 		</div>
-
-		<div class= "body-footer fadein scaleInv anim_3">
-			<%= render 'layouts/footer' %>
-		</div>
 	</div>
+
 </body>
 </html>

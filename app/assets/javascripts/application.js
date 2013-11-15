@@ -21,6 +21,7 @@
 //= require bootstrap
 //= require jquery.classywiggle
 //= require jquery.serializeJSON
+//= require backgroundcover
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

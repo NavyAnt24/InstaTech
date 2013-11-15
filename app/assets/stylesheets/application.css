@@ -14,5 +14,6 @@
  *= require custom
  *= require feeds
  *= require yummi-loader
+ *= require home_page
  *= require_tree .
  */
