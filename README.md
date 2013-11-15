@@ -18,8 +18,6 @@ After that work on OAuth
 
 * Add omniauth to allow users to add feeds or entries to twitter/facebook/etc
 
-1) page not rerendering on adding news source
-
   1) build home page (use Twitter bootstrap)
 
 6) Animated menu items -> looking into the bootstrap css to see if you can have the animation fade in instead of just change (not important)
@@ -32,7 +30,6 @@ After that work on OAuth
 	https://github.com/javan/whenever
 
 
-	1) Make page reload on adding feed
 	1) Twitter - add a twitter feed both to the main feed page (which consolidates
 		all of the feeds, make sure they alternate), and also to each feed page (do
 			 this first). Facebook. Google+. LinkedIn. (https://github.com/sferik/twitter).
@@ -49,9 +46,12 @@ After that work on OAuth
 	8) Fix tweets controller to make sure you are not adding the same feed twice (if
 		you are, then just delete the old tweets)
 	9) Add the Tweet button: https://dev.twitter.com/docs/tweet-button
+	10) Fix twitter links - https://github.com/thinkswan/jquery-twitter-autolink
+		OR https://github.com/twitter/twitter-text-js#twitter-text-js
 
 
 	THINGS DONE
+	1) Make page reload on adding feed
 	* 	Get Figaro working (https://github.com/laserlemon/figaro)
 	7) Draggable / Droppable
   3) Allow user to add feeds (have a feed index page, but also allow the user to input a new feed themselves)

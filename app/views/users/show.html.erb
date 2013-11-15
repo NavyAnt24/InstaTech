@@ -4,7 +4,7 @@
 	<div class="row" id="row1">
 		<div class="col-md-1"></div>
 
-		<div class="col-md-10" id="feed-view">
+		<div class="col-md-10" >
 			<div class="progress progress-striped active">
 				<div class="progress-bar" style="width:100%"></div>
 			</div>
@@ -15,11 +15,8 @@
 			InstaTech.userFeeds = new InstaTech.Collections.Feeds();
 			InstaTech.userFeeds.fetch({
 				success: function(collection) {
-					// $('.progress-bar').css('width', '100%')
 					router = new InstaTech.Router();
 					Backbone.history.start();
-					// router.navigate("users/" + InstaTech.Store.currentUserId + "/feeds")
-					// router.userFeeds();
 				}
 			});
 		</script>
