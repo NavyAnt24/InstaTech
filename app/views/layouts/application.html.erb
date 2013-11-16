@@ -8,11 +8,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			// var windowHeight = $(window).height();
-			// $('.background-image').backgroundcover();
-			// $('.background-image').css('height', windowHeight);
-			// $('.background-image').css({opacity: 0});
-			// $('.background-image').animate({opacity: 1}, 600);
 			$('body').toggleClass('on off');
 		});
 	</script>
@@ -25,10 +20,7 @@
 
 			<div class="inner-body fadein scaleInv anim_2">
 				<%= yield %>
-
-				<div id="feed-view">
-				</div>
-
+        <div id="feed-view"></div>
 			</div>
 
 			<div class= "body-footer fadein scaleInv anim_3">

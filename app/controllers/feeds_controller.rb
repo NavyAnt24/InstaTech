@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
 
   def index
-    @feeds = Feed.where(:user_id => current_user.id)
+    @feeds = Feed.where(:user_id => current_user.id) #.includes(:likes)
     render :json => @feeds
   end
 

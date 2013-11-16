@@ -2,8 +2,40 @@
 	margin: 7% 15% 0 15%;
 	height: 300px;
 	border-radius: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
 	h1 {
+    padding-top: 25px;
+    padding-left: 40px;
 		font-family: 'Lobster', cursive;
 		font-size: 90px;
 	}
+  h3 {
+    padding-left: 40px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  a {
+    margin-left: 40px;
+  }
 }
+
+.jumbotron-image {
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//  background-position: 100%;
+  float:right;
+  width: 50%;
+  height: 100%;
+}
+
+.jumbotron {
+  padding: 0px;
+}
+
+/*
+background-image: url('harbor2.jpg');
+background-size: contain;
+background-repeat: no-repeat;
+background-position: 100%;
+*/

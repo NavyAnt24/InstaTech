@@ -5,7 +5,7 @@ InstaTech.Store = {
 				revert: true,
 				start: function() {
 					$(this).ClassyWiggle('start');
-					$(this).css('z-index', 10);
+					$(this).css('z-index', 10000);
 				},
 
 				stop: function() {

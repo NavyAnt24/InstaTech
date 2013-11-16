@@ -1,5 +1,30 @@
 <div class="jumbotron">
+  <%= image_tag "harbor2.jpg", class: "jumbotron-image" %>
 	<h1>Amelia</h1>
-	<h2>Discover News...Beautifully.</h2>
+	<h3>Discover News...Beautifully.</h3>
+  <p><a class="btn btn-primary btn-lg" href="<%= new_user_url%>">Join us</a></p>
+  <div class="home-page-box box1">
+
+
+  </div>
+
+  <div class="home-page-box box2">
+
+
+  </div>
+
+  <div class="home-page-box box3">
+
+
+  </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('.jumbotron-image').css({opacity: 0});
+    setTimeout(function() {
+      $('.jumbotron-image').animate({opacity: 1}, 2000);
+    }, 750);
+  });
+</script>
 
